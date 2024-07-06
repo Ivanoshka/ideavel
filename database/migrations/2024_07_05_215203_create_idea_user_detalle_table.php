@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ideas', function (Blueprint $table) {
+        Schema::create('idea_user_detalle', function (Blueprint $table) {
             $table->id();
-            //esta es una llave foranea
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('title');
-            $table->text('description');
-            $table->unsignedInteger('likes');
+            //llave foranea
+            $table->foreignId('idea_id')->constrained()->cascadeOnDelete(); //usamos cascadeOnDelete porque si se borra la publicacion se borra la info de esa publicacion
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ideas');
+        Schema::dropIfExists('idea_user_detalle');
     }
 };
