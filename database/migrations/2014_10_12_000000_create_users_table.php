@@ -12,12 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            //creamos los nombres de la columnas de la tabla
+            $table->id(); //ya es incrementable por default
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('email_verified_at')->nullable(); //puede ser null
             $table->string('password');
-            $table->rememberToken();
+            $table->rememberToken(); //es la columna guardar el token y ser recordador por el sistema
             $table->timestamps();
         });
     }
